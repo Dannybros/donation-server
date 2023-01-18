@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import cases from './routes/Cases.js'
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ mongoose.connection.on("connected", ()=>{
 
 app.use(express.json());
 app.use(cors());
+
+app.use('/cases', cases)
 
 app.get('/', (req, res)=>{
     res.send("initial setup");
